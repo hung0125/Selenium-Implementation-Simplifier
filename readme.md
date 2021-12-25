@@ -14,7 +14,7 @@ import seleniumMain
 import seleniumLogin (optional and depends on seleniumMain.py)
 ```
 
-*Available functions*
+*Available functions*<br>
 seleniumMain:
 1. startChrome(url, driverPath): start automation
   - driverPath = the path of chormedriver.exe
