@@ -17,8 +17,8 @@ import seleniumLogin (optional and depends on seleniumMain.py)
 ## *Available functions*<br>
 **seleniumMain:**
 1. startChrome(url, driverPath): start automation
-  - driverPath = the path of chormedriver.exe
-  - This function **must** be called first in your scripts
+- driverPath = the path of chormedriver.exe
+- This function **must** be called first in your scripts
 
 Browser controls<br>
 2. loadUrl(url): load a url<br>
