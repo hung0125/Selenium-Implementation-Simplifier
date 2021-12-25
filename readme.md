@@ -1,4 +1,4 @@
-#**Welcome to Selenium Implementation Simplifier**
+# **Welcome to Selenium Implementation Simplifier**
 *Must know*
 1. The libraries support Chrome driver only
 2. The libraries are only tested on Windows
