@@ -20,7 +20,7 @@ seleniumMain:
   - driverPath = the path of chormedriver.exe
   - This function **must** be called first in your scripts
 
-*Browser controls*<br>
+Browser controls
 2. loadUrl(url): load a url
 3. goBack(): load the previous page
 4. goBackUsingCache(): load the previous page faster but at the cost of not updating the page content
@@ -28,7 +28,7 @@ seleniumMain:
 6. f5(): reload page
 7. end(): terminate the automation process, but not the entire program
 
-*Element interactions*<br>
+Element interactions
 8. eleExists(inXPATH): check if element exists, return True if so
 9. waitForEle(inXPATH, timeoutSeconds): wait until the element can be located, end the automation when time is up
 10. f5UntilEleExists(inXPATH): keep refreshing until the element can be located
