@@ -1,20 +1,20 @@
 # **Welcome to Selenium Implementation Simplifier**
-*Must know*
+## *Must know*
 1. The libraries support Chrome driver only
 2. The libraries are only tested on Windows
 3. For simplicity, the libraries locate elemets by XPATH only
 
-*Installation*
+## *Installation*
 1. pip install selenium
 2. Get a copy of chromedriver.exe from [here](https://chromedriver.chromium.org/)
 
-*Setting up in your scripts*
+## *Setting up in your scripts*
 ```
 import seleniumMain
 import seleniumLogin (optional and depends on seleniumMain.py)
 ```
 
-*Available functions*<br>
+## *Available functions*<br>
 seleniumMain:
 1. startChrome(url, driverPath): start automation
   - driverPath = the path of chormedriver.exe
@@ -46,4 +46,11 @@ seleniumLogin:
  - user = your userID/email
  - pwd = your password
 
-*Running in IDLE*
+## *Running in IDLE*
+In your IDLE, type the following code:
+```
+import sys
+sys.path.append(r"the path that stores the libraries")
+import seleniumMain as sm
+#do your things here
+```
