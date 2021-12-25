@@ -21,22 +21,22 @@ seleniumMain:
   - This function **must** be called first in your scripts
 
 Browser controls<br>
-2. loadUrl(url): load a url
-3. goBack(): load the previous page
-4. goBackUsingCache(): load the previous page faster but at the cost of not updating the page content
-5. goForward(): load the next page from browsing history
-6. f5(): reload page
-7. end(): terminate the automation process, but not the entire program
+2. loadUrl(url): load a url<br>
+3. goBack(): load the previous page<br>
+4. goBackUsingCache(): load the previous page faster but at the cost of not updating the page content<br>
+5. goForward(): load the next page from browsing history<br>
+6. f5(): reload page<br>
+7. end(): terminate the automation process, but not the entire program<br>
 
 Element interactions<br>
-8. eleExists(inXPATH): check if element exists, return True if so
-9. waitForEle(inXPATH, timeoutSeconds): wait until the element can be located, end the automation when time is up
-10. f5UntilEleExists(inXPATH): keep refreshing until the element can be located
-11. getEleText(inXPATH): return the text of an element
-12. clickEle(inXPATH): click an element
-13. sendTextAndEnter(inXPATH, txt): input text in a textbox/textarea and press enter key
-14. sendText(inXPATH, txt): input text in a textbox/textarea
-15. screenshot(inXPATH, outPath): screenshot an element
+8. eleExists(inXPATH): check if element exists, return True if so<br>
+9. waitForEle(inXPATH, timeoutSeconds): wait until the element can be located, end the automation when time is up<br>
+10. f5UntilEleExists(inXPATH): keep refreshing until the element can be located<br>
+11. getEleText(inXPATH): return the text of an element<br>
+12. clickEle(inXPATH): click an element<br>
+13. sendTextAndEnter(inXPATH, txt): input text in a textbox/textarea and press enter key<br>
+14. sendText(inXPATH, txt): input text in a textbox/textarea<br>
+15. screenshot(inXPATH, outPath): screenshot an element<br>
 
 seleniumLogin:
 1. login(userXPATH, pwdXPATH, loginBtnXPATH, user, pwd): perform login process
