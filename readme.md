@@ -15,7 +15,7 @@ import seleniumLogin (optional and depends on seleniumMain.py)
 ```
 
 ## *Available functions*<br>
-seleniumMain:
+**seleniumMain:**
 1. startChrome(url, driverPath): start automation
   - driverPath = the path of chormedriver.exe
   - This function **must** be called first in your scripts
@@ -40,7 +40,7 @@ Element interactions<br>
 16. screenshot(inXPATH, outPath): screenshot an element<br>
  - outPath = output path with file name
 
-seleniumLogin:
+**seleniumLogin:**
 1. login(userXPATH, pwdXPATH, loginBtnXPATH, user, pwd): perform login process
  - userXPATH = input element that asks for userID/email
  - pwdXPATH = input element that asks for password
