@@ -27,6 +27,7 @@ Browser controls<br>
 5. goForward(): load the next page from browsing history<br>
 6. f5(): reload page<br>
 7. end(): terminate the automation process, but not the entire program<br>
+8. getCurURL(): get current URL
 
 Element interactions<br>
 8. eleExists(inXPATH): check if element exists, return True if so<br>
