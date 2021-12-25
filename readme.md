@@ -38,7 +38,7 @@ Element interactions<br>
 14. sendTextAndEnter(inXPATH, txt): input text in a textbox/textarea and press enter key<br>
 15. sendText(inXPATH, txt): input text in a textbox/textarea<br>
 16. screenshot(inXPATH, outPath): screenshot an element<br>
- -outPath = output path with file name
+ - outPath = output path with file name
 
 seleniumLogin:
 1. login(userXPATH, pwdXPATH, loginBtnXPATH, user, pwd): perform login process
