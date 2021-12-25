@@ -27,17 +27,18 @@ Browser controls<br>
 5. goForward(): load the next page from browsing history<br>
 6. f5(): reload page<br>
 7. end(): terminate the automation process, but not the entire program<br>
-8. getCurURL(): get current URL
+8. getCurURL() --> string: get current URL
 
 Element interactions<br>
-8. eleExists(inXPATH): check if element exists, return True if so<br>
-9. waitForEle(inXPATH, timeoutSeconds): wait until the element can be located, end the automation when time is up<br>
-10. f5UntilEleExists(inXPATH): keep refreshing until the element can be located<br>
-11. getEleText(inXPATH): return the text of an element<br>
-12. clickEle(inXPATH): click an element<br>
-13. sendTextAndEnter(inXPATH, txt): input text in a textbox/textarea and press enter key<br>
-14. sendText(inXPATH, txt): input text in a textbox/textarea<br>
-15. screenshot(inXPATH, outPath): screenshot an element<br>
+9. eleExists(inXPATH) --> boolean: check if element exists, return True if so<br>
+10. waitForEle(inXPATH, timeoutSeconds): wait until the element can be located, end the automation when time is up<br>
+11. f5UntilEleExists(inXPATH): keep refreshing until the element can be located<br>
+12. getEleText(inXPATH): return the text of an element<br>
+13. clickEle(inXPATH): click an element<br>
+14. sendTextAndEnter(inXPATH, txt): input text in a textbox/textarea and press enter key<br>
+15. sendText(inXPATH, txt): input text in a textbox/textarea<br>
+16. screenshot(inXPATH, outPath): screenshot an element<br>
+ -outPath = output path with file name
 
 seleniumLogin:
 1. login(userXPATH, pwdXPATH, loginBtnXPATH, user, pwd): perform login process
