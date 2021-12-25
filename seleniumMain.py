@@ -41,6 +41,9 @@ def end():
     s.close()
     system("taskkill /im chromedriver.exe /f")
 
+def getCurURL():
+    return s.current_url
+
 #element interactions
 def eleExists(inXPATH):
     try:
@@ -54,7 +57,7 @@ def waitForEle(inXPATH, timeoutSeconds):
     while(not eleExists(inXPATH)):
         if time() - start > timeoutSeconds:
             end()
-            sys.exit("Timeout! Program ended.")
+            #sys.exit("Timeout! Program ended.")
         sleep(0.1)
 
 def f5UntilEleExists(inXPATH):
