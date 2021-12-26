@@ -43,6 +43,9 @@ def end():
 def getCurURL():
     return s.current_url
 
+def minimize():
+    s.minimize_window()
+
 #element interactions
 def findEle(selector, description):
     return s.find_elements(selector, description)
