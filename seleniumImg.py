@@ -3,20 +3,13 @@ import requests as rq
 from os import path, mkdir
 from urllib.parse import urlparse
 
-def fixExt(name):
-    extList = ['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'webp', 'bmp', 'ico', 'cur', 'tif', 'tiff']
-    for e in extList:
-        if name.endswith(e):
-            return name
-    print('Not image format, replaced with .jpg')
-    return name + '.jpg'
-
 def AllImageLinks():
     tmp = sm.findEle('tag name', 'img')
     result = []
 
     for e in tmp:
-        result.append(e.get_attribute('src'))
+        if not e.get_attribute('src') in result:
+            result.append(e.get_attribute('src'))
         
     return result
 
@@ -33,19 +26,26 @@ def downloadAllImages(outDir):
         mkdir(outDir)
         
     link = AllImageLinks()
-    
+
+    num = 1
     for l in link:
-        fname = fixExt(path.basename(urlparse(l).path))
-        if path.exists(f'{outDir}/{fname}'):
-            print(f'Skipping: {fname}')
-        else:
-            print(f'Downloading: {fname}')
-            try:
-                outstream = open(f'{outDir}{fname}', 'wb')
-                outstream.write(rq.get(l).content)
-                outstream.close()
-            except:
-                print(f'Download failed: {fname}')
+        fname = path.basename(urlparse(l).path)
+        print(f'Downloading from URL: {l}')
+        try:
+            req = rq.get(l)
+            ext = '.' + req.headers['content-type'].split("/")[1]
+
+            if not fname.endswith(ext) and not fname.endswith('.jpg'):
+                fname += ext
+
+            mkdir(f'{outDir}img_{num}/')
+            outstream = open(f'{outDir}img_{num}/{fname}', 'wb')
+            outstream.write(req.content)
+            outstream.close()
+
+            num += 1
+        except:
+            print(f'Download failed: {l}')
 
 def imageLink(selector, description):
     return sm.findEle(selector, description)[0].get_attribute('src')
@@ -63,15 +63,21 @@ def downloadImage(selector, description, outDir):
         mkdir(outDir)
     
     link = imageLink(selector, description)
-    fname = fixExt(path.basename(urlparse(link).path))
+    fname = path.basename(urlparse(link).path)
     
-    print(f'Downloading: {fname}')
+    print(f'Downloading from URL: {link}')
     try:
+        req = rq.get(link)
+        ext = '.' + req.headers['content-type'].split("/")[1]
+
+        if not fname.endswith(ext) and not fname.endswith('.jpg'):
+            fname += ext
+        
         outstream = open(f'{outDir}{fname}', 'wb')
-        outstream.write(rq.get(link).content)
+        outstream.write(req.content)
         outstream.close()
     except:
-        print(f'Download failed: {fname}')
+        print(f'Download failed: {link}')
 
 
     
