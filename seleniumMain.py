@@ -1,8 +1,7 @@
+#'CLASS_NAME', 'CSS_SELECTOR', 'ID', 'LINK_TEXT', 'NAME', 'PARTIAL_LINK_TEXT', 'TAG_NAME', 'XPATH'
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as cserv
 from selenium.webdriver.firefox.service import Service as fserv
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 from shutil import rmtree
 from time import time, sleep
 from os import system
@@ -45,38 +44,28 @@ def getCurURL():
     return s.current_url
 
 #element interactions
-def eleExists(inXPATH):
+def findEle(selector, description):
+    return s.find_elements(selector, description)
+    
+def eleExists(selector, description):
     try:
-        s.find_element(By.XPATH, inXPATH)
+        s.find_element(selector, description)
         return True
     except:
         return False
         
-def waitForEle(inXPATH, timeoutSeconds):
+def waitForEle(selector, description, timeoutSeconds):
     start = time()
-    while(not eleExists(inXPATH)):
+    while(not eleExists(selector, description)):
         if time() - start > timeoutSeconds:
-            end()
-            #sys.exit("Timeout! Program ended.")
+            try:
+                end()
+                print("Timeout! Program ended.")
+                #sys.exit("Timeout! Program ended.")
+            except:
+                pass
         sleep(0.1)
 
-def f5UntilEleExists(inXPATH):
-    while(not eleExists(inXPATH)):
+def f5UntilEleExists(selector, description):
+    while(not eleExists(selector, description)):
         f5()
-
-def getEleText(inXPATH):
-    return s.find_element(By.XPATH, inXPATH).text
-
-def clickEle(inXPATH):
-    s.find_element(By.XPATH, inXPATH).click()
-
-def sendTextAndEnter(inXPATH, txt):
-    s.find_element(By.XPATH, inXPATH).send_keys(txt, Keys.ENTER)
-
-def sendText(inXPATH, txt):
-    s.find_element(By.XPATH, inXPATH).send_keys(txt)
-
-def screenshot(inXPATH, outPath):
-    s.find_element(By.XPATH, inXPATH).screenshot(outPath)
-    
-
