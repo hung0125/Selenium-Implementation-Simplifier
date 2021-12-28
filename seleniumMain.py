@@ -46,6 +46,9 @@ def getCurURL():
 def minimize():
     s.minimize_window()
 
+def switchTab(tabIndex):
+    s.switch_to.window(s.window_handles[tabIndex])
+
 #element interactions
 def findEle(selector, description):
     return s.find_elements(selector, description)
