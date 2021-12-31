@@ -2,6 +2,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as cserv
 from selenium.webdriver.firefox.service import Service as fserv
+from selenium.webdriver.common.action_chains import ActionChains
 from shutil import rmtree
 from time import time, sleep
 from os import system
@@ -11,13 +12,15 @@ import zipfile
 ser = None
 op = None
 s = None
+act = None
 
 def startChrome(url, driverPath):
-    global ser, op, s
+    global ser, op, s, act
     ser = cserv(driverPath)
     op = webdriver.ChromeOptions()
     s = webdriver.Chrome(service = ser, options = op)
     s.get(url)
+    act = ActionChains(s)
     rmtree("__pycache__")
 
 #browser controls
@@ -75,3 +78,6 @@ def waitForEle(selector, description, timeoutSeconds):
 def f5UntilEleExists(selector, description):
     while(not eleExists(selector, description)):
         f5()
+
+def hover(selector, description):
+    act.move_to_element(s.find_element(selector, description)).perform()
