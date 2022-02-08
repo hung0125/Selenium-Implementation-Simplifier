@@ -2,7 +2,6 @@
 ## *Must know*
 1. The libraries support Chrome driver only
 2. The libraries are only tested on Windows
-3. For simplicity, the libraries locate elemets by XPATH only
 
 ## *Installation*
 1. pip install selenium
