@@ -9,56 +9,58 @@ from os import system
 import sys
 import zipfile
 
+#public fields (can directly access)
 ser = None
 op = None
-s = None
+manage = None
 act = None
 
-def startChrome(url, driverPath):
-    global ser, op, s, act
+def startChrome(url:str, driverPath:str):
+    global ser, op, manage, act
     ser = cserv(driverPath)
     op = webdriver.ChromeOptions()
-    s = webdriver.Chrome(service = ser, options = op)
-    s.get(url)
-    act = ActionChains(s)
-    rmtree("__pycache__")
+    manage = webdriver.Chrome(service = ser, options = op)
+    manage.get(url)
+    act = ActionChains(manage)
+    try:
+        rmtree("__pycache__")
+    except: pass
 
+    
 #browser controls
-def loadUrl(url):
-    s.get(url)
+'''def loadUrl(url):
+    manage.get(url)
 
 def goBack():
-    s.back()
+    manage.back()
 
 def goBackUsingCache():
-    s.execute_script("history.back();")
+    manage.execute_script("history.back();")
     
 def goForward():
-    s.forward()
-
-def f5():
-    s.refresh()
+    manage.forward()
+'''
 
 def end():
-    s.close()
+    manage.close()
     system("taskkill /im chromedriver.exe /f")
 
 def getCurURL():
-    return s.current_url
+    return manage.current_url
 
 def minimize():
-    s.minimize_window()
+    manage.minimize_window()
 
 def switchTab(tabIndex):
-    s.switch_to.window(s.window_handles[tabIndex])
+    manage.switch_to.window(manage.window_handles[tabIndex])
 
 #element interactions
 def findEle(selector, description):
-    return s.find_elements(selector, description)
+    return manage.find_elements(selector, description)
     
 def eleExists(selector, description):
     try:
-        s.find_element(selector, description)
+        manage.find_element(selector, description)
         return True
     except:
         return False
@@ -77,7 +79,7 @@ def waitForEle(selector, description, timeoutSeconds):
 
 def f5UntilEleExists(selector, description):
     while(not eleExists(selector, description)):
-        f5()
+        manage.refresh()
 
 def hover(selector, description):
-    act.move_to_element(s.find_element(selector, description)).perform()
+    act.move_to_element(manage.find_element(selector, description)).perform()
